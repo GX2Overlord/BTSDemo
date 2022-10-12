@@ -37,12 +37,14 @@ cmake --build ./build --config Debug
 Pop-Location
 # open solution
 echo "Opening Solution in Editor..."
-Push-Location $PSScriptRoot/BTSDemo
-devenv "./build"
+Push-Location $PSScriptRoot/BTSDemo/build
+WindowsPong.sln
 Pop-Location
 # run demo executable
 echo "Launching Demo Executable..."
-
+Push-Location $PSScriptRoot/BTSDemo/build/Debug
+WindowsPong.exe
+Pop-Location
 echo "BTS Automation Script complete"
 # Comment back in for debugging:
 Read-Host -Prompt "Press Enter to exit"
