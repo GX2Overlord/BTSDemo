@@ -2,6 +2,7 @@
 echo "BTS Automation Script ver 0.1"
 # install windows update module
 echo "Running Windows Update..."
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Get-Command -Module WindowsUpdateProvider
 Install-Module PSWindowsUpdate -Force
 # get any pending updates + install and reboot if needed
