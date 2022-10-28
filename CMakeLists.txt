@@ -11,4 +11,4 @@ set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 ADD_DEFINITIONS(-DUNICODE)
 ADD_DEFINITIONS(-D_UNICODE)
 
-add_executable (WindowsPong winpong.cpp)
+add_executable (WindowsPong WIN32 winpong.c)
