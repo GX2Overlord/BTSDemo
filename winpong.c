@@ -163,14 +163,7 @@ void UpdateScoreBoardAndReset(HWND hWnd) {
 }
 void RunPaddleAI() {
 	// the AI programmer just went on vacation... oh no! what do we do!?
-	if (rightPaddle.top < ball.y) {
-		rightPaddle.top += PADDLE_SPEED;
-		rightPaddle.bottom += PADDLE_SPEED;
-	}
-	if (rightPaddle.bottom > ball.y) {
-		rightPaddle.top -= PADDLE_SPEED;
-		rightPaddle.bottom -= PADDLE_SPEED;
-	}
+
 }
 
 // operating system function implementations
