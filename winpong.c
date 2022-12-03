@@ -5,8 +5,8 @@
 #include <stdlib.h>
 
 // program defines
-#define SCREEN_WIDTH  1920
-#define SCREEN_HEIGHT 1080
+#define SCREEN_WIDTH  1600
+#define SCREEN_HEIGHT 900
 #define PADDLE_WIDTH  50
 #define PADDLE_HEIGHT 300
 #define PADDLE_GAP    100
@@ -187,10 +187,8 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 		window_size.bottom - window_size.top,
 		NULL, NULL, GetModuleHandleW(0), 0);
 	if (window) {
-		RECT rc;
-		GetWindowRect(window, &rc);
-		int xPos = (GetSystemMetrics(SM_CXSCREEN) - rc.right) / 2;
-		int yPos = (GetSystemMetrics(SM_CYSCREEN) - rc.bottom) / 2;
+		int xPos = (GetSystemMetrics(SM_CXSCREEN) - SCREEN_WIDTH) / 2;
+		int yPos = (GetSystemMetrics(SM_CYSCREEN) - SCREEN_HEIGHT) / 2;
 		SetWindowPos(window, 0, xPos, yPos, 0, 0, SWP_NOZORDER | SWP_NOSIZE);
 		ShowWindow(window, SW_SHOW);
 		hdc = BeginPaint(window, &ps);
