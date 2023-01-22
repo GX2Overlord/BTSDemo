@@ -5,18 +5,19 @@
 #include <stdlib.h>
 
 // program defines
-#define SCREEN_WIDTH  1600
-#define SCREEN_HEIGHT 900
-#define PADDLE_WIDTH  50
-#define PADDLE_HEIGHT 300
-#define PADDLE_GAP    100
-#define PADDLE_SPEED  25
-#define BALL_RADIUS   50
-#define BALL_SPEEDH   10
-#define BALL_SPEEDV   5
-#define BALL_SPEEDMIN 5
-#define BALL_SPEEDMAX 20
-#define BALL_BOOST    1
+#define SCREEN_WIDTH    1600
+#define SCREEN_HEIGHT   900
+#define PADDLE_WIDTH    50
+#define PADDLE_HEIGHT   300
+#define PADDLE_GAP      100
+#define PADDLE_SPEED    25
+#define BALL_RADIUS     50
+#define BALL_SPEEDH     10
+#define BALL_SPEEDV     5
+#define BALL_SPEEDMIN   5
+#define BALL_SPEEDMAX_X 40
+#define BALL_SPEEDMAX_Y 20
+#define BALL_BOOST      1
 
 // game variables
 int scoreLeftPlayer = 0;
@@ -89,6 +90,14 @@ void GetUserInput(HWND hWnd) {
 void RunPhysicsAndGameLogic(HWND hWnd) {
 	RECT result;
 	RECT ballRectangle = { ball.x - BALL_RADIUS, ball.y - BALL_RADIUS, ball.x + BALL_RADIUS, ball.y + BALL_RADIUS };
+	if (ballVelocity.x > BALL_SPEEDMAX_X)
+		ballVelocity.x = BALL_SPEEDMAX_X;
+	if (ballVelocity.x < -BALL_SPEEDMAX_X)
+		ballVelocity.x = -BALL_SPEEDMAX_X;
+	if (ballVelocity.y > BALL_SPEEDMAX_Y)
+		ballVelocity.y = BALL_SPEEDMAX_Y;
+	if (ballVelocity.y < -BALL_SPEEDMAX_Y)
+		ballVelocity.y = -BALL_SPEEDMAX_Y;
 	ball.x += ballVelocity.x;
 	ball.y += ballVelocity.y;
 	if (ballRectangle.top < 0) {
@@ -163,7 +172,7 @@ void UpdateScoreBoardAndReset(HWND hWnd) {
 }
 void RunPaddleAI() {
 	// the AI programmer just went on vacation... oh no! what do we do!?
-
+	
 }
 
 // operating system function implementations
